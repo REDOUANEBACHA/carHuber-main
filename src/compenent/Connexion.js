@@ -4,6 +4,7 @@ import { auth } from "../firebas/farebaseConfigue";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import {connecter  } from '../action/action.tsx'
+import axios from "axios";
 function Connexion() {
 
   const [email ,setEmail] = useState('');
@@ -13,14 +14,17 @@ function Connexion() {
   const navigate = useNavigate();
   const dispatch = useDispatch()
   
-  const handleSubmit = (event) => {
+  const handleSubmit =  (event) => {
     event.preventDefault();
     signInWithEmailAndPassword(auth,email,password)
     .then(user => {
       setPassword('')
       setEmail('')
       setErreur('')
-      dispatch(connecter())
+      axios.get('http://localhost:1000/users')
+      .then( data => 
+        dispatch(connecter(usedata(data))))
+      .catch(err=> console.log(err))
       navigate('/admin')
       
     })
@@ -28,9 +32,9 @@ function Connexion() {
       setErreur(error)
    
     });
- 
-  
+
   }
+
     return (
       <div className="connexion-container">
         <h1>Connexion</h1>
@@ -48,6 +52,12 @@ function Connexion() {
     
       </div>
     );
+  }
+
+   
+  function usedata(data)
+  {
+    return { id:data.data.data.id , nam:data.data.data.nam , email:data.data.data.email , password:data.data.data.password }
   }
   
   export default Connexion;
