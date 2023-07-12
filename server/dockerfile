@@ -1,0 +1,23 @@
+# Utilisez une image de base avec Node.js préinstallé
+FROM node:14
+
+# Définissez le répertoire de travail dans le conteneur
+WORKDIR /app
+
+# Copiez les fichiers package.json et package-lock.json dans le répertoire de travail
+COPY package*.json ./
+
+# Installez les dépendances de l'application
+RUN npm install
+
+# Copiez le reste des fichiers de l'application dans le répertoire de travail
+COPY . .
+
+# Construisez l'application
+RUN npm run build
+
+# Définissez les variables d'environnement, si nécessaire
+# ENV VARIABLE_NAME value
+
+# Définissez la commande de démarrage de l'application
+CMD [ "npm", "start" ]

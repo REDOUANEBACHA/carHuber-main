@@ -3,7 +3,7 @@ import {signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebas/farebaseConfigue";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {connecter  } from '../action/action.tsx'
+import { connecter  } from '../action/action.tsx'
 import axios from "axios";
 function Connexion() {
 
@@ -21,7 +21,7 @@ function Connexion() {
       setPassword('')
       setEmail('')
       setErreur('')
-      axios.get('http://localhost:1000/users')
+      axios.post(`http://localhost:1000/users/${email}`)
       .then( data => 
         dispatch(connecter(usedata(data))))
       .catch(err=> console.log(err))

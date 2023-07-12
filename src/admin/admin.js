@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import '../style/style.css'
-import Deconnexion from '../compenent/deconnexion';
+import Deconnexion from '../auth/deconnexion';
 import  {auth} from '../firebas/farebaseConfigue'
 import { onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';

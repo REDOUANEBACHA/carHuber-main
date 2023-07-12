@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Inscription from '../compenent/Inscription';
-import Connexion from '../compenent/Connexion';
+import Inscription from '../auth/inscription';
+import Connexion from '../auth/connexion';
 import Masterpage from '../masterpage/Masterpage';
 import Erreur from '../pageErreur/Erreur';
 import Admin from '../admin/admin';
-import OublieMotDepasse from '../compenent/oublieMotDepasse';
+import OublieMotDepasse from '../auth/oublieMotDepasse';
 
 function RouterAll() {
   //
