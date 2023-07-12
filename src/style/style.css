@@ -1,0 +1,78 @@
+.header {
+    background-color: #f2f2f2;
+    padding: 20px;
+    top: 0;
+    position: relative;
+    left: 0;
+    width: 100%;
+  }
+  
+  .footer {
+    background-color: #f2f2f2;
+    padding: 70px;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+  }
+  
+  .inscription-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  /* logoutButton.css */
+.logout-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px 12px;
+  background-color: #f1f1f1;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #ddd;
+}
+.messageSucces {
+ color:  rgb(26, 94, 29);
+}
