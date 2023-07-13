@@ -1,23 +1,32 @@
-# Utilisez une image de base avec Node.js préinstallé
+# Utiliser l'image officielle Node.js avec une version spécifique
 FROM node:14
 
-# Définissez le répertoire de travail dans le conteneur
+# Répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copiez les fichiers package.json et package-lock.json dans le répertoire de travail
+# Copier les fichiers package.json et package-lock.json vers le répertoire de travail
 COPY package*.json ./
 
-# Installez les dépendances de l'application
+# Installer les dépendances
 RUN npm install
 
-# Copiez le reste des fichiers de l'application dans le répertoire de travail
+# Copier le reste des fichiers du projet vers le répertoire de travail
 COPY . .
 
-# Construisez l'application
-RUN npm run build
+# Exposer le port sur lequel votre application Node.js s'exécute
+EXPOSE 1000
 
-# Définissez les variables d'environnement, si nécessaire
-# ENV VARIABLE_NAME value
+# Configuration de l'environnement pour la base de données MySQL
+ENV DATABASE_URL="mysql://root:password@host.docker.internal:3306/store"
 
-# Définissez la commande de démarrage de l'application
-CMD [ "npm", "start" ]
+# Build de la base de données avec Prisma
+RUN npx prisma generate
+
+# Commande pour exécuter l'application
+CMD [ "npx", "nodemon" ]
+
+
+#apres
+#1  docker build -t server-carhuber
+#2  docker run -p 1000:1000 server-carhuer
+

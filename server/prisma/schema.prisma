@@ -2,12 +2,14 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
 }
 
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+  //DATABASE_URL  "mysql://redouanestore:tassa@host.docker.internal:3306/store"
 }
 
 model User {
