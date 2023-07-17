@@ -1,11 +1,11 @@
 export type AppAction =
   | {
       type: 'ajouter';
-      stock: number;
+      panier: number;
     }
   | {
       type: 'reduit';
-      stock: number;
+      panier: number;
     }
   | {
       type: 'connecter';
