@@ -5,6 +5,7 @@ const cors = require("cors");
 app.use(cors());
 
 require("./router/user")(app);
+require("./router/produit")(app);
 
 app.use((err, req, res, next) => {
   console.error(err);

@@ -13,19 +13,43 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
-  nam      String?
-  password String
-  Achat    Achat[]
+  id          Int           @id @default(autoincrement())
+  email       String        @unique
+  name        String?
+  username    String
+  Achat       Achat[]
+  Commentaire Commentaire[]
 }
 
 model Achat {
-  id         Int    @id @default(autoincrement())
+  id         Int     @id @default(autoincrement())
   id_user    Int
-  nam_articl String
-  prix       Int
-  user       User   @relation(fields: [id_user], references: [id])
+  id_produit Int
+  produit    Produit @relation(fields: [id_produit], references: [id])
+  user       User    @relation(fields: [id_user], references: [id])
 }
 
-// npx prisma generate 
+model Produit {
+  id          Int           @id @default(autoincrement())
+  name        String
+  prix        Int
+  promotion   Int
+  code_promo  String
+  description String
+  Achat       Achat[]
+  Commentaire Commentaire[]
+}
+
+model Commentaire {
+  id          Int      @id @default(autoincrement())
+  commentaire String
+  date        DateTime
+  id_user     Int
+  id_produit  Int
+  produit     Produit  @relation(fields: [id_produit], references: [id])
+  user        User     @relation(fields: [id_user], references: [id])
+}
+
+// npx prisma generate  
+// Exécutez la commande suivante pour générer un fichier de migration :     npx prisma migrate save --experimental
+// Appliquez la migration à la base de données avec la commande suivante :   npx prisma migrate up --experimental
