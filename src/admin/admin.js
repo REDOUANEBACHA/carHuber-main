@@ -7,6 +7,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import Test from './test';
 import axios from 'axios';
+import Panier from '../compenent/panier';
 
 
 function Admin() {
@@ -30,7 +31,8 @@ function Admin() {
    : 
     (<div>   
         <Deconnexion/>
-        <h1 > Admin</h1> 
+        <Panier/>
+        <h1 className='text-white text-s font-bold'> Admin</h1> 
 
         <Test/>
         <h1>{}</h1>
