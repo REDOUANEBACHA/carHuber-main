@@ -1,21 +1,18 @@
 
 import React, { useEffect, useState } from 'react';
 import '../style/style.css'
-import Deconnexion from '../auth/deconnexion';
+
 import  {auth} from '../firebas/farebaseConfigue'
 import { onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import Test from './test';
-import axios from 'axios';
-import Panier from '../compenent/panier';
+import Cards from '../compenent/cards';
 
 
 function Admin() {
-
-
     const navigate = useNavigate();
     const [usersassion , setUserSession] = useState(null)
-   useEffect(()=>{
+    useEffect(()=>{
         onAuthStateChanged(auth,user=>{
           if(user){ setUserSession(user) 
           }
@@ -30,11 +27,10 @@ function Admin() {
     </div>)
    : 
     (<div>   
-        <Deconnexion/>
-        <Panier/>
+   
         <h1 className='text-white text-s font-bold'> Admin</h1> 
-
         <Test/>
+        <Cards/>
         <h1>{}</h1>
   </div>);
 }
