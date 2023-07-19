@@ -6,6 +6,7 @@ app.use(cors());
 
 require("./router/user")(app);
 require("./router/produit")(app);
+require("./router/categorie")(app);
 
 app.use((err, req, res, next) => {
   console.error(err);
