@@ -30,14 +30,30 @@ model Achat {
 }
 
 model Produit {
-  id          Int           @id @default(autoincrement())
-  name        String
-  prix        Int
-  promotion   Int
-  code_promo  String
-  description String
-  Achat       Achat[]
-  Commentaire Commentaire[]
+  id               Int           @id @default(autoincrement())
+  name             String
+  prix             Int
+  promotion        Int
+  code_promo       String
+  description      String
+  id_menuCategorie Int
+  Achat            Achat[]
+  Commentaire      Commentaire[]
+  Menucategorie    Menucategorie @relation(fields: [id_menuCategorie], references: [id])
+}
+
+model Categorie {
+  id             Int             @id @default(autoincrement())
+  type_categorie String
+  Menucategorie  Menucategorie[]
+}
+
+model Menucategorie {
+  id           Int       @id @default(autoincrement())
+  id_categorie Int
+  name         String
+  Categorie    Categorie @relation(fields: [id_categorie], references: [id])
+  Produit      Produit[]
 }
 
 model Commentaire {
