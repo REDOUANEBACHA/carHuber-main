@@ -5,15 +5,16 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { connecter, deconnecter  } from '../action/action.tsx'
 import axios from "axios";
-import Auth from "./auth";
+import Auth from "../compenent/layout/auth";
 import { useAuthorization } from "../hooks/authorization";
+import { usedata } from "../utils/data";
 
 function Connexion() {
   const navigate = useNavigate();
   const auth = useAuthorization()
   if(auth)
   {
-    navigate('/admin')
+    navigate('/Dashboard')
   }
   return (
     <Auth>    
@@ -40,7 +41,7 @@ function FormeConnexion()
           .post(`http://localhost:1000/users/${email}`)
           .then((data) => {
             dispatch(connecter(usedata(data)));
-            navigate('/admin');
+            navigate('/Dashboard');
           })
           .catch((error)=>
             signOut(auth).then(() => {
@@ -107,11 +108,5 @@ function FormeConnexion()
   </div>
   )
 } 
-function usedata(data)
-{
-    console.log(data.data)
-    return { user : { id:data.data.data.id , nam:data.data.data.name , email:data.data.data.email  } , achat : {data : data.data.data.Achat } }
-}
-
 export default Connexion;
   

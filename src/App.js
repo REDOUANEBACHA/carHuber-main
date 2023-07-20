@@ -3,11 +3,17 @@
 import RouterAll from './router/Router';
 import { Provider } from 'react-redux';
 import { store } from './store/reducer.tsx';
-import Header from './compenent/Header';
+import Sidebar from './compenent/layout/sidebar';
+
 function App() {
   return (
     <Provider store={store}>
-        <RouterAll/>
+      <div className="flex">
+         <div className="flex flex-col flex-1">
+            <RouterAll/>
+          </div>
+      </div>
+        
     </Provider>
 
       );

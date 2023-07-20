@@ -1,15 +1,13 @@
 
 import React, { useEffect, useState } from 'react';
-import '../style/style.css'
-
 import  {auth} from '../firebas/farebaseConfigue'
 import { onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import Test from './test';
-import Cards from '../compenent/cards';
+import AppLayout from '../compenent/layout/applayout';
 
 
-function Admin() {
+function Dashboard() {
     const navigate = useNavigate();
     const [usersassion , setUserSession] = useState(null)
     useEffect(()=>{
@@ -26,15 +24,16 @@ function Admin() {
       ...login
     </div>)
    : 
-    (<div>   
-   
-        <h1 className='text-white text-s font-bold'> Admin</h1> 
-        <Test/>
-        <Cards/>
+    (   
+      <AppLayout>
+       <div>
+       <Test/>
         <h1>{}</h1>
-  </div>);
+       </div>
+      </AppLayout>
+ );
 }
 
 
 
-export default Admin;
+export default Dashboard;

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Link  , useNavigate} from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebas/farebaseConfigue';
-import Auth from './auth';
+import Auth from '../compenent/layout/auth';
 import { useAuthorization } from '../hooks/authorization';
 
 const Inscription = () => {
@@ -17,7 +17,7 @@ const Inscription = () => {
   )
   :
   (
-    navigate('/admin')
+    navigate('/Dashboard')
   );
 };
 
@@ -42,7 +42,7 @@ function FormeInscription()
     .then(user => {
       setLoginData({...loginData})
       setError('')
-      navigate('/admin')
+      navigate('/Dashboard')
     })
     .catch(error => {
       setError(error)

@@ -3,14 +3,13 @@ import Inscription from '../auth/inscription';
 import Connexion from '../auth/connexion';
 import Masterpage from '../masterpage/Masterpage';
 import Erreur from '../pageErreur/Erreur';
-import Admin from '../admin/admin';
+import Dashboard from '../page/dashboard';
 import OublieMotDepasse from '../auth/oublieMotDepasse';
 import Deconnexion from '../auth/deconnexion';
-import Header from '../compenent/Header'
+import Header from '../compenent/layout/Header'
 function RouterAll() {
-  //
+
   return (
-    
     <Router>
     <Header/>
       <Routes>
@@ -18,9 +17,9 @@ function RouterAll() {
       <Route path="/Deconnexion" element={<Deconnexion />} />
         <Route path="/Inscription" element={<Inscription />} />
         <Route path="/connexion" element={<Connexion />} />
-        <Route path="/admin" element={<Admin />} />
         <Route path="/OublieMotDepasse" element={<OublieMotDepasse />} />
         <Route  path="*" element={<Erreur />} />
+        <Route path="/Dashboard" element={<Dashboard/>} />
       </Routes>
     </Router>
   );

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import {sendPasswordResetEmail } from "firebase/auth";
 import { auth } from '../firebas/farebaseConfigue';
 import { useNavigate } from 'react-router-dom';
-import Auth from './auth';
+import Auth from '../compenent/layout/auth';
 import { useAuthorization } from '../hooks/authorization';
 
 function OublieMotDepasse() {
@@ -17,7 +17,7 @@ function OublieMotDepasse() {
   )
   :
   (
-    navigate('/admin')
+    navigate('/Dashboard')
   )
 }
 
