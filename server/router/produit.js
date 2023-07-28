@@ -20,24 +20,26 @@ module.exports = app =>{
     }
   });
 
-  app.post('/produit/commentaire/:id', async (req, res) => {
-    const id = parseInt(req.params.id,30)
+  app.get('/produit', async (req, res) => {
     try {
-      const userWithAchat = await prisma.commentaire.findMany({
-        where: {
-          id_produit: id,
-        },
+      const produit = await prisma.produit.findMany({
         include: {
-          user: true,
-        },
+          Menucategorie: {
+            include: {
+              Categorie: true 
+            }
+          }
+        }
       });
-      res.status(200).send({ status: 'success', data: userWithAchat });
+  
+      res.status(200).send({ status: 'success', data: produit });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Une erreur est survenue lors de la récupération des utilisateurs.' });
+      res.status(500).json({ error: 'Une erreur est survenue lors de la récupération des catégories.' });
     }
   });
-
+  
+  
 
   app.post('/produits/:categorie/:menucategorie', async (req, res) => {
     const categorie = req.params.categorie

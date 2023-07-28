@@ -11,6 +11,7 @@ app.get('/categories', async (req, res) => {
     res.status(500).json({ error: 'Une erreur est survenue lors de la récupération des catégories.' });
   }
 });
+
   
 app.get('/menucategories', async (req, res) => {
   try {
